@@ -1,0 +1,66 @@
+[
+  {
+    "id": "ea1f8044-c9b3-46fe-82d5-fbedcb7075a3",
+    "data": [
+      {
+        "text": "change the triangle\u0027s color to ",
+        "userDefined": false
+      },
+      {
+        "text": "red",
+        "alias": "color",
+        "meta": "@sys.color",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "097d8405-43da-4700-9eb1-551d2fc40e8f",
+    "data": [
+      {
+        "text": "set tint to ",
+        "userDefined": false
+      },
+      {
+        "text": "blue",
+        "alias": "color",
+        "meta": "@sys.color",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "9fa179ac-0526-4302-8faf-ab19c044726c",
+    "data": [
+      {
+        "text": "green",
+        "alias": "color",
+        "meta": "@sys.color",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "a846d50d-577c-4664-aaec-ea5eecdb0b6b",
+    "data": [
+      {
+        "text": "change color to ",
+        "userDefined": false
+      },
+      {
+        "text": "red",
+        "alias": "color",
+        "meta": "@sys.color",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]

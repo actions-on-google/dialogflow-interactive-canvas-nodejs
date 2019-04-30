@@ -1,0 +1,24 @@
+[
+  {
+    "id": "8955cdf0-8093-4d6b-925c-163356f41a10",
+    "data": [
+      {
+        "text": "spin",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  },
+  {
+    "id": "3a373668-db44-4180-b46b-44f0166e0a86",
+    "data": [
+      {
+        "text": "start",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0
+  }
+]

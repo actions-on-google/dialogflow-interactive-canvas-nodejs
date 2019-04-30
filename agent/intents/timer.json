@@ -1,0 +1,48 @@
+{
+  "id": "8d725a5c-2824-41bb-ac5b-1928abc0007e",
+  "name": "timer",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "payload": {
+            "google": {
+              "richResponse": {
+                "expectUserResponse": true,
+                "items": [
+                  {
+                    "simpleResponse": {
+                      "textToSpeech": "I\u0027ll ask again in 5 seconds."
+                    }
+                  },
+                  {
+                    "immersiveResponse": {
+                      "updatedState": {
+                        "timer": 5
+                      },
+                      "suppressMic": true
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": []
+}
