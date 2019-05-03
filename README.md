@@ -1,6 +1,6 @@
-# Actions on Google: Immersive Canvas Sample
+# Actions on Google: Interactive Canvas Sample
 
-This sample demonstrates how to create an Immersive Canvas experience using Actions on Google for the Google Assistant -- using the [Node.js client library](https://github.com/actions-on-google/actions-on-google-nodejs) and deployed on [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) and [Firebase Hosting](https://firebase.google.com/docs/hosting).
+This sample demonstrates how to create an Interactive Canvas experience using Actions on Google for the Google Assistant -- using the [Node.js client library](https://github.com/actions-on-google/actions-on-google-nodejs) and deployed on [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) and [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 ## Setup Instructions
 ### Prerequisites
