@@ -57,8 +57,8 @@ app.intent('color', (conv, {color}) => {
     }));
     return;
   }
-  conv.ask(`Sorry, I don't know that color. ' +
-    'I only know what red, blue, and green are.`);
+  conv.ask(`Sorry, I don't know that color. ` +
+    `I only know what red, blue, and green are.`);
   conv.ask(new ImmersiveResponse({
     state: {
       query: conv.query,
@@ -76,7 +76,7 @@ app.intent('start', (conv) => {
 });
 
 app.intent('pause', (conv) => {
-  conv.ask(`Ok, I paused spinning. What else?`);
+  conv.ask('Ok, I paused spinning. What else?');
   conv.ask(new ImmersiveResponse({
     state: {
       spin: false,

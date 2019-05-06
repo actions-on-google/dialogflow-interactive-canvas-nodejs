@@ -1,13 +1,13 @@
 # Actions on Google: Interactive Canvas Sample
 
-This sample demonstrates how to create an Interactive Canvas experience using Actions on Google for the Google Assistant -- using the [Node.js client library](https://github.com/actions-on-google/actions-on-google-nodejs) and deployed on [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) and [Firebase Hosting](https://firebase.google.com/docs/hosting).
+This sample demonstrates how to create an [Interactive Canvas](https://developers.google.com/actions/canvas/) experience using Actions on Google for the Google Assistant -- using the [Node.js client library](https://github.com/actions-on-google/actions-on-google-nodejs) and deployed on [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) and [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 ## Setup Instructions
 ### Prerequisites
 1. Node.js and NPM
     + We recommend installing using [nvm for Linux/Mac](https://github.com/creationix/nvm) and [nvm-windows for Windows](https://github.com/coreybutler/nvm-windows)
 1. Install the [Firebase CLI](https://developers.google.com/actions/dialogflow/deploy-fulfillment)
-    + We recommend using MAJOR version 6 with 6.5.0 or above, `npm install -g firebase-tools@^6.5.0`
+    + We recommend using MAJOR version `6` with `6.5.0` or above, `npm install -g firebase-tools@^6.5.0`
     + Run `firebase login` with your Google account
 
 ### Configuration
@@ -21,6 +21,7 @@ This sample demonstrates how to create an Interactive Canvas experience using Ac
 
 #### Firebase Deployment
 1. On your local machine, in the `functions` directory, run `npm install`
+    1. Note that when creating a new project for Interactive Canvas, you must install the `actions-on-google` library **Developer Preview** version using the `@preview` tag with `npm install actions-on-google@preview`.
 1. Run `firebase deploy --project {PROJECT_ID}` to deploy the function and hosting
     + To find your **Project ID**: In [Dialogflow console](https://console.dialogflow.com/) under **Settings** ⚙ > **General** tab > **Project ID**.
 
@@ -39,6 +40,7 @@ This sample demonstrates how to create an Interactive Canvas experience using Ac
 ## References & Issues
 + Questions? Go to [StackOverflow](https://stackoverflow.com/questions/tagged/actions-on-google), [Assistant Developer Community on Reddit](https://www.reddit.com/r/GoogleAssistantDev/) or [Support](https://developers.google.com/actions/support/).
 + For bugs, please report an issue on Github.
++ Actions on Google [Interactive Canvas Documentation](https://developers.google.com/actions/canvas/)
 + Actions on Google [Documentation](https://developers.google.com/actions/extending-the-assistant)
 + Actions on Google [Codelabs](https://codelabs.developers.google.com/?cat=Assistant)
 + [Webhook Boilerplate Template](https://github.com/actions-on-google/dialogflow-webhook-boilerplate-nodejs) for Actions on Google
