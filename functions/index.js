@@ -17,7 +17,7 @@
 'use strict';
 
 const functions = require('firebase-functions');
-const {dialogflow, ImmersiveResponse} = require('actions-on-google');
+const {dialogflow, HtmlResponse} = require('actions-on-google');
 
 // map of human speakable colors to color values
 const tints = {
@@ -33,15 +33,15 @@ const app = dialogflow({debug: true});
 app.intent('welcome', (conv) => {
   conv.ask('Welcome! Do you want me to change color or pause spinning? ' +
     'You can also tell me to ask you later.');
-  conv.ask(new ImmersiveResponse({
+  conv.ask(new HtmlResponse({
     url: `https://${firebaseConfig.projectId}.firebaseapp.com`,
   }));
 });
 
 app.intent('fallback', (conv) => {
   conv.ask(`I don't understand. You can change my color or pause spinning.`);
-  conv.ask(new ImmersiveResponse({
-    state: {
+  conv.ask(new HtmlResponse({
+    data: {
       query: conv.query,
     },
   }));
@@ -50,8 +50,8 @@ app.intent('fallback', (conv) => {
 app.intent('color', (conv, {color}) => {
   if (color in tints) {
     conv.ask(`Ok, I changed my color to ${color}. What else?`);
-    conv.ask(new ImmersiveResponse({
-      state: {
+    conv.ask(new HtmlResponse({
+      data: {
         tint: tints[color],
       },
     }));
@@ -59,8 +59,8 @@ app.intent('color', (conv, {color}) => {
   }
   conv.ask(`Sorry, I don't know that color. ` +
     `I only know what red, blue, and green are.`);
-  conv.ask(new ImmersiveResponse({
-    state: {
+  conv.ask(new HtmlResponse({
+    data: {
       query: conv.query,
     },
   }));
@@ -68,8 +68,8 @@ app.intent('color', (conv, {color}) => {
 
 app.intent('start', (conv) => {
   conv.ask(`Ok, I'm spinning. What else?`);
-  conv.ask(new ImmersiveResponse({
-    state: {
+  conv.ask(new HtmlResponse({
+    data: {
       spin: true,
     },
   }));
@@ -77,8 +77,8 @@ app.intent('start', (conv) => {
 
 app.intent('pause', (conv) => {
   conv.ask('Ok, I paused spinning. What else?');
-  conv.ask(new ImmersiveResponse({
-    state: {
+  conv.ask(new HtmlResponse({
+    data: {
       spin: false,
     },
   }));
@@ -86,9 +86,9 @@ app.intent('pause', (conv) => {
 
 app.intent('timer', (conv) => {
   conv.ask(`Ok, I'll ask you again in 5 seconds`);
-  conv.ask(new ImmersiveResponse({
+  conv.ask(new HtmlResponse({
     suppress: true,
-    state: {
+    data: {
       timer: 5,
     },
   }));
@@ -97,8 +97,8 @@ app.intent('timer', (conv) => {
 app.intent('instructions', (conv) => {
   conv.ask('Do you want me to change color or pause spinning? ' +
     'You can also tell me to ask you later.');
-  conv.ask(new ImmersiveResponse({
-    state: {
+  conv.ask(new HtmlResponse({
+    data: {
       instructions: true,
     },
   }));

@@ -49,25 +49,25 @@ stage.addChild(sprite);
 
 let spin = true;
 
-// register assistant canvas callbacks
+// register interactive canvas callbacks
 const callbacks = {
-  onUpdate(state) {
-    console.log('onUpdate', JSON.stringify(state));
-    if ('tint' in state) {
-      sprite.tint = state.tint;
+  onUpdate(data) {
+    console.log('onUpdate', JSON.stringify(data));
+    if ('tint' in data) {
+      sprite.tint = data.tint;
     }
-    if ('spin' in state) {
-      spin = state.spin;
+    if ('spin' in data) {
+      spin = data.spin;
     }
-    if ('timer' in state) {
+    if ('timer' in data) {
       setTimeout(() => {
         // trigger the assistant as if the user said "instructions"
-        assistantCanvas.sendTextQuery('instructions');
-      }, state.timer * 1000);
+        interactiveCanvas.sendTextQuery('instructions');
+      }, data.timer * 1000);
     }
   },
 };
-assistantCanvas.ready(callbacks);
+interactiveCanvas.ready(callbacks);
 
 // toggle spin on touch events of the triangle
 sprite.interactive = true;

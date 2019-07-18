@@ -7,7 +7,7 @@ This sample demonstrates how to create an [Interactive Canvas](https://developer
 1. Node.js and NPM
     + We recommend installing using [nvm for Linux/Mac](https://github.com/creationix/nvm) and [nvm-windows for Windows](https://github.com/coreybutler/nvm-windows)
 1. Install the [Firebase CLI](https://developers.google.com/actions/dialogflow/deploy-fulfillment)
-    + We recommend using MAJOR version `6` with `6.5.0` or above, `npm install -g firebase-tools@^6.5.0`
+    + We recommend using MAJOR version `7` with `7.1.1` or above, `npm install -g firebase-tools@^7.1.1`
     + Run `firebase login` with your Google account
 
 ### Configuration

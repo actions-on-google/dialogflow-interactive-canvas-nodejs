@@ -1,6 +1,6 @@
 {
   "name": "canvas-sample-functions",
-  "description": "Actions on Google Immersive Canvas Sample Functions",
+  "description": "Actions on Google Interactive Canvas Sample Functions",
   "license": "Apache-2.0",
   "private": true,
   "engines": {
@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "actions-on-google": "preview",
-    "firebase-admin": "~7.0.0",
-    "firebase-functions": "^2.2.0"
+    "firebase-admin": "~8.0.0",
+    "firebase-functions": "^3.1.0"
   }
 }
