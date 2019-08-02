@@ -16,84 +16,81 @@
 
 'use strict';
 
-const view = document.getElementById('view');
+window.onload = () => {
+  const scene = new Scene();
+  this.scene = scene;
 
-// set up fps monitoring
-const stats = new Stats();
-view.getElementsByClassName('stats')[0].appendChild(stats.domElement);
+  // Set Google Assistant Canvas Action at scene level
+  this.action = new Action(scene);
+  // Call setCallbacks to register interactive canvas
+  this.action.setCallbacks();
+}
 
-// initialize rendering and set correct sizing
-const ratio = window.devicePixelRatio;
-const renderer = PIXI.autoDetectRenderer({
-  transparent: true,
-  antialias: true,
-  resolution: ratio,
-  width: view.clientWidth,
-  height: view.clientHeight,
-});
-const element = renderer.view;
-element.style.width = `${renderer.width / ratio}px`;
-element.style.height = `${renderer.height / ratio}px`;
-view.appendChild(element);
+/**
+ * Represent Triangle scene
+ */
+class Scene {
+  constructor() {
+    const view = document.getElementById('view');
 
-// center stage and normalize scaling for all resolutions
-const stage = new PIXI.Container();
-stage.position.set(view.clientWidth / 2, view.clientHeight / 2);
-stage.scale.set(Math.max(renderer.width, renderer.height) / 1024);
+    // set up fps monitoring
+    const stats = new Stats();
+    view.getElementsByClassName('stats')[0].appendChild(stats.domElement);
 
-// load a sprite from a svg file
-const sprite = PIXI.Sprite.from('triangle.svg');
-sprite.anchor.set(0.5);
-sprite.tint = 0x00FF00; // green
-stage.addChild(sprite);
+    // initialize rendering and set correct sizing
+    const ratio = window.devicePixelRatio;
+    const renderer = PIXI.autoDetectRenderer({
+      transparent: true,
+      antialias: true,
+      resolution: ratio,
+      width: view.clientWidth,
+      height: view.clientHeight,
+    });
+    const element = renderer.view;
+    element.style.width = `${renderer.width / ratio}px`;
+    element.style.height = `${renderer.height / ratio}px`;
+    view.appendChild(element);
 
-let spin = true;
+    // center stage and normalize scaling for all resolutions
+    const stage = new PIXI.Container();
+    stage.position.set(view.clientWidth / 2, view.clientHeight / 2);
+    stage.scale.set(Math.max(renderer.width, renderer.height) / 1024);
 
-// register interactive canvas callbacks
-const callbacks = {
-  onUpdate(data) {
-    console.log('onUpdate', JSON.stringify(data));
-    if ('tint' in data) {
-      sprite.tint = data.tint;
-    }
-    if ('spin' in data) {
-      spin = data.spin;
-    }
-    if ('timer' in data) {
-      setTimeout(() => {
-        // trigger the assistant as if the user said "instructions"
-        interactiveCanvas.sendTextQuery('instructions');
-      }, data.timer * 1000);
-    }
-  },
-};
-interactiveCanvas.ready(callbacks);
+    // load a sprite from a svg file
+    const sprite = PIXI.Sprite.from('triangle.svg');
+    this.sprite = sprite;
+    sprite.anchor.set(0.5);
+    sprite.tint = 0x00FF00; // green
+    sprite.spin = true;
+    stage.addChild(sprite);
 
-// toggle spin on touch events of the triangle
-sprite.interactive = true;
-sprite.buttonMode = true;
-sprite.on('pointerdown', () => {
-  spin = !spin;
-});
+    // toggle spin on touch events of the triangle
+    sprite.interactive = true;
+    sprite.buttonMode = true;
+    sprite.on('pointerdown', () => {
+      sprite.spin = !spin;
+    });
 
-let last = performance.now();
-// frame-by-frame animation function
-const frame = () => {
-  stats.begin();
+    let last = performance.now();
+    // frame-by-frame animation function
+    const frame = () => {
+      stats.begin();
 
-  // calculate time differences for smooth animations
-  const now = performance.now();
-  const delta = now - last;
+      // calculate time differences for smooth animations
+      const now = performance.now();
+      const delta = now - last;
 
-  // rotate the triangle only if spin is true
-  if (spin) {
-    sprite.rotation += delta / 1000;
+      // rotate the triangle only if spin is true
+      if (sprite.spin) {
+        sprite.rotation += delta / 1000;
+      }
+
+      last = now;
+
+      renderer.render(stage);
+      stats.end();
+      requestAnimationFrame(frame);
+    };
+    frame();
   }
-
-  last = now;
-
-  renderer.render(stage);
-  stats.end();
-  requestAnimationFrame(frame);
-};
-frame();
+}

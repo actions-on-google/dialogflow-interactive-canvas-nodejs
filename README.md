@@ -1,6 +1,6 @@
 # Actions on Google: Interactive Canvas Sample
 
-This sample demonstrates how to create an [Interactive Canvas](https://developers.google.com/actions/canvas/) experience using Actions on Google for the Google Assistant -- using the [Node.js client library](https://github.com/actions-on-google/actions-on-google-nodejs) and deployed on [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) and [Firebase Hosting](https://firebase.google.com/docs/hosting).
+This sample demonstrates how to create an [Interactive Canvas](https://developers.google.com/actions/canvas/) experience using Actions on Google for the Google Assistant. It uses the [Node.js client library](https://github.com/actions-on-google/actions-on-google-nodejs) and is deployed on [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) and [Firebase Hosting](https://firebase.google.com/docs/hosting).
 
 ## Setup Instructions
 ### Prerequisites
@@ -13,10 +13,10 @@ This sample demonstrates how to create an [Interactive Canvas](https://developer
 ### Configuration
 #### Actions Console
 1. From the [Actions on Google Console](https://console.actions.google.com/), add a new project > **Create Project** > under **More options** > **Conversational**
-1. From the top menu under **Deploy** > **Directory information** (left nav)
+1. Click **Deploy** in the top menu. Then, click **Additional information**.
     1. Under **Category**, select **Games & fun**
-    1. Under **Immersive Canvas** *Do your Actions use Immersive Canvas?*, check **Yes**
-1. From the left menu under **Develop** > **Actions** > **Add your first action** > **Play game** > **GET STARTED IN DIALOGFLOW** (this will bring you to the Dialogflow console) > Select language and time zone > **CREATE**.
+    1. Under **Interactive Canvas** *Do your Actions use Interactive Canvas?*, check **Yes**
+1. Click **Develop** in the top menu. Then, click **Actions** > **Add Your First Action** > **Play game** > **GET STARTED IN DIALOGFLOW** (this will bring you to the Dialogflow console) > Select language and time zone > **CREATE**.
 1. In the Dialogflow console, go to **Settings** ⚙ > **Export and Import** > **Restore from zip** using the `agent.zip` in this sample's directory.
 
 #### Firebase Deployment
@@ -28,7 +28,7 @@ This sample demonstrates how to create an [Interactive Canvas](https://developer
 #### Dialogflow Console
 1. Return to the [Dialogflow Console](https://console.dialogflow.com) > select **Fulfillment** > **Enable** Webhook > Set **URL** to the **Function URL** that was returned after the deploy command > **SAVE**.
     ```
-    Function URL (dialogflowFirebaseFulfillment): https://${REGION}-${PROJECT_ID}.cloudfunctions.net/dialogflowFirebaseFulfillment
+    https://${REGION}-${PROJECT_ID}.cloudfunctions.net/dialogflowFirebaseFulfillment
     ```
 1. From the left navigation menu, click **Integrations** > **Integration Settings** under Google Assistant > Enable **Auto-preview changes** >  **Test** to open the Actions on Google simulator then say or type `Talk to my test app`.
 
