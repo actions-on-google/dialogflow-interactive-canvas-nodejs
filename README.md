@@ -21,7 +21,7 @@ This sample demonstrates how to create an [Interactive Canvas](https://developer
 
 #### Firebase Deployment
 1. On your local machine, in the `functions` directory, run `npm install`
-    1. Note that when creating a new project for Interactive Canvas, you must install the `actions-on-google` library **Developer Preview** version using the `@preview` tag with `npm install actions-on-google@preview`.
+    1. Note that when creating a new project for Interactive Canvas, you must install the `actions-on-google` library with `npm install actions-on-google`.
 1. Run `firebase deploy --project {PROJECT_ID}` to deploy the function and hosting
     + To find your **Project ID**: In [Dialogflow console](https://console.dialogflow.com/) under **Settings** ⚙ > **General** tab > **Project ID**.
 

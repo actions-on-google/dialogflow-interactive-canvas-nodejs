@@ -9,10 +9,7 @@
       "affectedContexts": [],
       "parameters": [],
       "messages": [],
-      "defaultResponsePlatforms": {
-        "google": false,
-        "hangouts": false
-      },
+      "defaultResponsePlatforms": {},
       "speech": []
     }
   ],
@@ -24,5 +21,8 @@
     {
       "name": "WELCOME"
     }
-  ]
+  ],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
 }

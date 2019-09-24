@@ -1,31 +1,40 @@
 {
   "description": "",
   "language": "en",
+  "shortDescription": "",
+  "examples": "",
+  "linkToDocs": "",
   "disableInteractionLogs": false,
   "disableStackdriverLogs": true,
   "googleAssistant": {
     "googleAssistantCompatible": true,
+    "project": "",
     "welcomeIntentSignInRequired": false,
     "startIntents": [],
     "systemIntents": [],
     "endIntentIds": [],
     "oAuthLinking": {
       "required": false,
+      "providerId": "",
+      "authorizationUrl": "",
+      "tokenUrl": "",
+      "scopes": "",
+      "privacyPolicyUrl": "",
       "grantType": "AUTH_CODE_GRANT"
     },
     "voiceType": "MALE_1",
     "capabilities": [],
+    "env": "",
     "protocolVersion": "V2",
-    "autoPreviewEnabled": true,
+    "autoPreviewEnabled": false,
     "isDeviceAgent": false
   },
-  "defaultTimezone": "America/Los_Angeles",
+  "defaultTimezone": "America/Denver",
   "webhook": {
-    "url": "https://REGION-PROJECT_ID.cloudfunctions.net/dialogflowFirebaseFulfillment",
-    "headers": {
-      "": ""
-    },
-    "available": true,
+    "url": "",
+    "username": "",
+    "headers": {},
+    "available": false,
     "useForDomains": false,
     "cloudFunctionsEnabled": false,
     "cloudFunctionsInitialized": false
@@ -38,5 +47,6 @@
   "analyzeQueryTextSentiment": false,
   "enabledKnowledgeBaseNames": [],
   "knowledgeServiceConfidenceAdjustment": -0.4,
-  "dialogBuilderMode": false
+  "dialogBuilderMode": false,
+  "baseActionPackagesUrl": ""
 }
