@@ -68,7 +68,7 @@ class Scene {
     sprite.interactive = true;
     sprite.buttonMode = true;
     sprite.on('pointerdown', () => {
-      sprite.spin = !this.sprite.spin;
+      sprite.spin = !sprite.spin;
     });
 
     let last = performance.now();
