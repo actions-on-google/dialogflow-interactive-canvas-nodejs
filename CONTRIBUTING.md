@@ -1,4 +1,4 @@
-# How to become a contributor and submit your own code
+# How to become a contributor and submit your code
 
 ## Contributor License Agreements
 
@@ -26,7 +26,6 @@ accept your pull requests.
 1. Fork the desired repo, develop and test your code changes.
 1. Ensure that your code adheres to the existing style in the sample to which
    you are contributing. Refer to the
-   [Google Cloud Platform Samples Style Guide](https://github.com/GoogleCloudPlatform/Template/wiki/style.html) for the
-   recommended coding standards for this organization.
-1. Ensure that your code has an appropriate set of unit tests which all pass.
+   [Google Cloud Platform Samples Style Guide](https://github.com/GoogleCloudPlatform/Template/wiki/style.html) for the recommended coding standards for this organization.
+1. Ensure that your code has an appropriate set of unit tests that all pass.
 1. Submit a pull request.
