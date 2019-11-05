@@ -17,7 +17,10 @@
 'use strict';
 
 const functions = require('firebase-functions');
-const { dialogflow, HtmlResponse } = require('actions-on-google');
+const {
+  dialogflow,
+  HtmlResponse,
+} = require('actions-on-google');
 
 // map of human speakable colors to color values
 const tints = {
@@ -28,12 +31,14 @@ const tints = {
 
 const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
 
-const app = dialogflow({ debug: true });
+const app = dialogflow({
+  debug: true,
+});
 
 app.intent('welcome', (conv) => {
   if (!conv.surface.capabilities
-    .has('actions.capability.INTERACTIVE_CANVAS')) {
-    conv.close("Sorry, this device does not support Interactive Canvas!");
+      .has('actions.capability.INTERACTIVE_CANVAS')) {
+    conv.close('Sorry, this device does not support Interactive Canvas!');
     return;
   }
   conv.ask('Welcome! Do you want me to change color or pause spinning? ' +
@@ -52,7 +57,9 @@ app.intent('fallback', (conv) => {
   }));
 });
 
-app.intent('color', (conv, { color }) => {
+app.intent('color', (conv, {
+  color,
+}) => {
   if (color in tints) {
     conv.ask(`Ok, I changed my color to ${color}. What else?`);
     conv.ask(new HtmlResponse({
@@ -92,22 +99,20 @@ app.intent('pause', (conv) => {
   }));
 });
 
-app.intent('timer', (conv) => {
-  conv.ask(`Ok, I'll ask you again in 5 seconds`);
-  conv.ask(new HtmlResponse({
-    suppress: true,
-    data: {
-      timer: 5,
-    },
-  }));
-});
-
 app.intent('instructions', (conv) => {
   conv.ask('Do you want me to change color or pause spinning? ' +
     'You can also tell me to ask you later.');
   conv.ask(new HtmlResponse({
     data: {
       instructions: true,
+    },
+  }));
+});
+
+app.intent('restart game', (conv) => {
+  conv.ask(new HtmlResponse({
+    data: {
+      command: 'RESTART_GAME',
     },
   }));
 });

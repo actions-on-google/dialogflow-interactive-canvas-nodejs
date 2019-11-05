@@ -1,3 +1,4 @@
+/* eslint-disable no-invalid-this */
 /**
  * Copyright 2019 Google Inc. All Rights Reserved.
  *
@@ -17,19 +18,21 @@
 'use strict';
 
 window.onload = () => {
-  const scene = new Scene();
-  this.scene = scene;
+  this.scene = new Scene();
 
   // Set Google Assistant Canvas Action at scene level
-  this.action = new Action(scene);
+  this.scene.action = new Action(scene);
   // Call setCallbacks to register interactive canvas
-  this.action.setCallbacks();
-}
+  this.scene.action.setCallbacks();
+};
 
 /**
  * Represent Triangle scene
  */
 class Scene {
+  /**
+   * Initializes the game with visual components.
+   */
   constructor() {
     const view = document.getElementById('view');
 
@@ -38,37 +41,37 @@ class Scene {
     view.getElementsByClassName('stats')[0].appendChild(stats.domElement);
 
     // initialize rendering and set correct sizing
-    const ratio = window.devicePixelRatio;
-    const renderer = PIXI.autoDetectRenderer({
+    this.radio = window.devicePixelRatio;
+    this.renderer = PIXI.autoDetectRenderer({
       transparent: true,
       antialias: true,
-      resolution: ratio,
+      resolution: this.radio,
       width: view.clientWidth,
       height: view.clientHeight,
     });
-    const element = renderer.view;
-    element.style.width = `${renderer.width / ratio}px`;
-    element.style.height = `${renderer.height / ratio}px`;
-    view.appendChild(element);
+    this.element = this.renderer.view;
+    this.element.style.width = `${this.renderer.width / this.radio}px`;
+    this.element.style.height = `${(this.renderer.height / this.radio)}px`;
+    view.appendChild(this.element);
 
     // center stage and normalize scaling for all resolutions
-    const stage = new PIXI.Container();
-    stage.position.set(view.clientWidth / 2, view.clientHeight / 2);
-    stage.scale.set(Math.max(renderer.width, renderer.height) / 1024);
+    this.stage = new PIXI.Container();
+    this.stage.position.set(view.clientWidth / 2, view.clientHeight / 2);
+    this.stage.scale.set(Math.max(this.renderer.width,
+        this.renderer.height) / 1024);
 
     // load a sprite from a svg file
-    const sprite = PIXI.Sprite.from('triangle.svg');
-    this.sprite = sprite;
-    sprite.anchor.set(0.5);
-    sprite.tint = 0x00FF00; // green
-    sprite.spin = true;
-    stage.addChild(sprite);
+    this.sprite = PIXI.Sprite.from('triangle.svg');
+    this.sprite.anchor.set(0.5);
+    this.sprite.tint = 0x00FF00; // green
+    this.sprite.spin = true;
+    this.stage.addChild(this.sprite);
 
     // toggle spin on touch events of the triangle
-    sprite.interactive = true;
-    sprite.buttonMode = true;
-    sprite.on('pointerdown', () => {
-      sprite.spin = !sprite.spin;
+    this.sprite.interactive = true;
+    this.sprite.buttonMode = true;
+    this.sprite.on('pointerdown', () => {
+      this.sprite.spin = !this.sprite.spin;
     });
 
     let last = performance.now();
@@ -81,16 +84,55 @@ class Scene {
       const delta = now - last;
 
       // rotate the triangle only if spin is true
-      if (sprite.spin) {
-        sprite.rotation += delta / 1000;
+      if (this.sprite.spin) {
+        this.sprite.rotation += delta / 1000;
       }
 
       last = now;
 
-      renderer.render(stage);
+      this.renderer.render(this.stage);
       stats.end();
       requestAnimationFrame(frame);
     };
     frame();
+    this.createRestartGameButton();
+  }
+
+  /**
+   * Restart game button to showcase sendTextQuery.
+   */
+  createRestartGameButton() {
+    const textureButton = PIXI.Texture
+        .fromImage('./restart_game_btn_enabled.png');
+    this.button = new PIXI.Sprite(textureButton);
+    this.button.scale.set(0.5);
+    this.button.textureButton = textureButton;
+    this.button.textureButtonDisabled = PIXI.Texture
+        .fromImage('./restart_game_btn_disabled.png');
+    const that = this;
+    const onButtonDown = function() {
+      console.log(`Request in flight`);
+      that.button.texture = that.button.textureButtonDisabled;
+      that.sprite.spin = false;
+      that.action.canvas.sendTextQuery('Restart game')
+          .then((res) => {
+            if (res.toUpperCase() === 'SUCCESS') {
+              console.log(`Request in flight: ${res}`);
+              that.button.texture = that.button.textureButtonDisabled;
+              that.sprite.spin = false;
+            } else {
+              console.log(`Request in flight: ${res}`);
+            }
+          });
+    };
+
+    this.button.buttonMode = true;
+    this.button.anchor.set(0.5);
+    this.button.x = 0;
+    this.button.y = 100;
+    this.button.interactive = true;
+    this.button.buttonMode = true;
+    this.button.on('pointerdown', onButtonDown);
+    this.stage.addChild(this.button);
   }
 }

@@ -17,29 +17,29 @@
 'use strict';
 
 /**
- * This class is used as a wrapper for Google Assistant Canvas Action class along
- * with its callbacks.
+ * This class is used as a wrapper for Google Assistant Canvas Action class
+ * along with its callbacks.
  */
 class Action {
   /**
-   * @param {scene} which serves as a container of all visual elements
+   * @param {*} scene which serves as a container of all visual elements
    */
   constructor(scene) {
     this.canvas = window.interactiveCanvas;
-    this.sprite = scene.sprite;
+    this.scene = scene;
     const that = this;
     this.commands = {
-      TINT: function (data) {
-        that.sprite.tint = data.tint;
+      TINT: function(data) {
+        that.scene.sprite.tint = data.tint;
       },
-      SPIN: function (data) {
-        that.sprite.spin = data.spin;
+      SPIN: function(data) {
+        that.scene.sprite.spin = data.spin;
       },
-      TIMER: function () {
-        setTimeout(() => {
-          // trigger the dialogflow agent as if the user said "instructions"
-          that.canvas.sendTextQuery('instructions');
-        }, data.timer * 1000);
+      RESTART_GAME: function(data) {
+        that.scene.button.texture = that.scene.button.textureButton;
+        that.scene.sprite.spin = true;
+        that.scene.sprite.tint = 0x0000FF; // blue
+        that.scene.sprite.rotation = 0;
       },
     };
   }
