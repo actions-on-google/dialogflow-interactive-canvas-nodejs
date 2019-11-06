@@ -20,6 +20,9 @@
   "events": [
     {
       "name": "WELCOME"
+    },
+    {
+      "name": "actions_intent_PLAY_GAME"
     }
   ],
   "conditionalResponses": [],

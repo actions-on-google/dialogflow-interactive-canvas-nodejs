@@ -16,12 +16,11 @@ This sample demonstrates how to create an [Interactive Canvas](https://developer
 1. Click **Deploy** in the top menu. Then, click **Additional information**.
     1. Under **Category**, select **Games & fun**
     1. Under **Interactive Canvas** *Do your Actions use Interactive Canvas?*, check **Yes**
-1. Click **Develop** in the top menu. Then, click **Actions** > **Add Your First Action** > **Play game** > **GET STARTED IN DIALOGFLOW** (this will bring you to the Dialogflow console) > Select language and time zone > **CREATE**.
+1. Click **Develop** in the top menu. Then, click **Actions** > **Add Your First Action** > **Custom intent** > **BUILD** (this will bring you to the Dialogflow console) > Select language and time zone > **CREATE**.
 1. In the Dialogflow console, go to **Settings** ⚙ > **Export and Import** > **Restore from zip** using the `agent.zip` in this sample's directory.
 
 #### Firebase Deployment
 1. On your local machine, in the `functions` directory, run `npm install`
-    1. Note that when creating a new project for Interactive Canvas, you must install the `actions-on-google` library with `npm install actions-on-google`.
 1. Run `firebase deploy --project {PROJECT_ID}` to deploy the function and hosting
     + To find your **Project ID**: In [Dialogflow console](https://console.dialogflow.com/) under **Settings** ⚙ > **General** tab > **Project ID**.
 
