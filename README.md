@@ -17,7 +17,7 @@ This sample demonstrates how to create an [Interactive Canvas](https://developer
     1. Under **Category**, select **Games & fun**
     1. Under **Interactive Canvas** *Do your Actions use Interactive Canvas?*, check **Yes**
 1. Click **Develop** in the top menu. Then, click **Actions** > **Add Your First Action** > **Custom intent** > **BUILD** (this will bring you to the Dialogflow console) > Select language and time zone > **CREATE**.
-1. In the Dialogflow console, go to **Settings** ⚙ > **Export and Import** > **Restore from zip** using the `agent.zip` in this sample's directory.
+1. In the Dialogflow console, go to **Settings** ⚙ > **Export and Import** > **Restore from zip** using the `agent.zip` in this sample's directory. (Don't forget to type-in restore in the input field after uploading the ZIP)
 
 #### Firebase Deployment
 1. On your local machine, in the `functions` directory, run `npm install`
